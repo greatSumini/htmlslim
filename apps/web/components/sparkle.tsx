@@ -1,17 +1,18 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 interface SparkleProps {
-  color?: string
-  size?: number
-  style?: React.CSSProperties
+  color?: string;
+  size?: number;
+  style?: React.CSSProperties;
 }
 
-const random = (min: number, max: number) => Math.floor(Math.random() * (max - min)) + min
+const random = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min)) + min;
 
 const generateSparkle = (color: string) => {
   return {
@@ -22,12 +23,16 @@ const generateSparkle = (color: string) => {
     style: {
       top: random(-10, 80) + "%",
       left: random(-10, 110) + "%",
-      zIndex: 2,
+      zIndex: 100,
     },
-  }
-}
+  };
+};
 
-const Sparkle = ({ color = "#FFC700", size = 20, style = {} }: SparkleProps) => {
+const Sparkle = ({
+  color = "#FFC700",
+  size = 20,
+  style = {},
+}: SparkleProps) => {
   return (
     <motion.svg
       width={size}
@@ -53,29 +58,36 @@ const Sparkle = ({ color = "#FFC700", size = 20, style = {} }: SparkleProps) => 
         fill={color}
       />
     </motion.svg>
-  )
-}
+  );
+};
 
 export function SparkleEffect() {
-  const [sparkles, setSparkles] = useState<Array<any>>([])
+  const [sparkles, setSparkles] = useState<Array<any>>([]);
 
   useEffect(() => {
-    const colors = ["#FFC700", "#FF6B6B", "#60D394", "#4EA8DE", "#845EC2"]
-    const newSparkles = Array.from({ length: 8 }).map(() => generateSparkle(colors[random(0, colors.length)]))
-    setSparkles(newSparkles)
+    const colors = ["#FFC700", "#FF6B6B", "#60D394", "#4EA8DE", "#845EC2"];
+    const newSparkles = Array.from({ length: 8 }).map(() =>
+      generateSparkle(colors[random(0, colors.length)])
+    );
+    setSparkles(newSparkles);
 
     const timeout = setTimeout(() => {
-      setSparkles([])
-    }, 1000)
+      setSparkles([]);
+    }, 1000);
 
-    return () => clearTimeout(timeout)
-  }, [])
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <>
       {sparkles.map((sparkle) => (
-        <Sparkle key={sparkle.id} color={sparkle.color} size={sparkle.size} style={sparkle.style} />
+        <Sparkle
+          key={sparkle.id}
+          color={sparkle.color}
+          size={sparkle.size}
+          style={sparkle.style}
+        />
       ))}
     </>
-  )
+  );
 }
