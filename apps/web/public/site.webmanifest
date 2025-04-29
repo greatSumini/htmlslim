@@ -1,0 +1,21 @@
+{
+  "name": "HtmlSlim",
+  "short_name": "HtmlSlim",
+  "description": "Optimize HTML for LLMs by removing unnecessary tags and attributes",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0a0b0f",
+  "background_color": "#0a0b0f",
+  "display": "standalone",
+  "start_url": "/"
+}
