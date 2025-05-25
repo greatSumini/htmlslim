@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Github } from "lucide-react"
-import { motion } from "framer-motion"
+import Link from "next/link";
+import { Github } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Header() {
   return (
@@ -30,6 +30,21 @@ export function Header() {
           <span className="font-semibold text-lg">HtmlSlim</span>
         </Link>
 
+        <nav className="hidden md:flex items-center gap-6">
+          <Link
+            href="/"
+            className="text-gray-300 hover:text-white transition-colors"
+          >
+            HTML
+          </Link>
+          <Link
+            href="/markdown"
+            className="text-gray-300 hover:text-white transition-colors"
+          >
+            Markdown
+          </Link>
+        </nav>
+
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Link
             href="https://github.com/greatSumini/htmlslim-web"
@@ -43,5 +58,5 @@ export function Header() {
         </motion.div>
       </div>
     </header>
-  )
+  );
 }
